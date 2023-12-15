@@ -144,7 +144,12 @@ public class CellLayoutManager extends LinearLayoutManager {
         if (mNeedSetLeft & scrollingLeft) {
             // Works just like invoke later of swing utils.
             Handler handler = new Handler();
-            handler.post(() -> fitWidthSize2(true));
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    fitWidthSize2(true);
+                }
+            });
         }
     }
 

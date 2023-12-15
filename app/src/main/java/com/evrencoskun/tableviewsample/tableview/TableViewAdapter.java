@@ -82,6 +82,7 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
     public AbstractViewHolder onCreateCellViewHolder(@NonNull ViewGroup parent, int viewType) {
         //TODO check
         Log.e(LOG_TAG, " onCreateCellViewHolder has been called");
+        Log.i("acornTag","onCreateCellViewHolder "+viewType);
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View layout;
 
@@ -123,6 +124,7 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
     public void onBindCellViewHolder(@NonNull AbstractViewHolder holder, @Nullable Cell cellItemModel, int
             columnPosition, int rowPosition) {
 
+        Log.i("acornTag","onBindCellViewHolder "+columnPosition+","+rowPosition);
         switch (holder.getItemViewType()) {
             case MOOD_CELL_TYPE:
                 MoodCellViewHolder moodViewHolder = (MoodCellViewHolder) holder;
@@ -206,7 +208,7 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
                 .inflate(R.layout.table_view_row_header_layout, parent, false);
 
         // Create a Row Header ViewHolder
-        return new RowHeaderViewHolder(layout);
+        return new RowHeaderViewHolder(new View(parent.getContext()));
     }
 
 
@@ -228,8 +230,8 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
                                           int rowPosition) {
 
         // Get the holder to update row header item text
-        RowHeaderViewHolder rowHeaderViewHolder = (RowHeaderViewHolder) holder;
-        rowHeaderViewHolder.row_header_textview.setText(String.valueOf(rowHeaderItemModel.getData()));
+//        RowHeaderViewHolder rowHeaderViewHolder = (RowHeaderViewHolder) holder;
+//        rowHeaderViewHolder.row_header_textview.setText(String.valueOf(rowHeaderItemModel.getData()));
     }
 
     @NonNull
@@ -249,7 +251,7 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
                 TableViewAdapter.this.getTableView().sortRowHeader(SortState.DESCENDING);
             }
         });
-        return corner;
+        return new View(parent.getContext());
     }
 
     @Override

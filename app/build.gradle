@@ -26,6 +26,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion compile_sdk_version
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId 'com.evrencoskun.tableviewsample'
@@ -45,8 +46,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = java_version
-        targetCompatibility = java_version
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
     }
 
     buildFeatures {
